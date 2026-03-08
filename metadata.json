@@ -1,0 +1,5 @@
+{
+  "name": "Image to PDF Converter",
+  "description": "A purely frontend tool to merge multiple images into a single PDF file.",
+  "requestFramePermissions": []
+}
