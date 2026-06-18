@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { jsPDF } from 'jspdf';
-import { UploadCloud, FileImage, Trash2, ArrowUp, ArrowDown, Download, Settings2, GripVertical, Languages, ArrowDownAZ, ArrowUpZA, Clock, FileText, Image as ImageIcon } from 'lucide-react';
+import { UploadCloud, FileImage, Trash2, ArrowUp, ArrowDown, Download, Settings2, GripVertical, Languages, ArrowDownAZ, ArrowUpZA, Clock, FileText } from 'lucide-react';
 import PdfExtractor from './PdfExtractor';
 
 type ImageItem = {
@@ -255,32 +255,6 @@ export default function App() {
       }
     });
     setImages(sorted);
-  };
-
-  const handleSortDragStart = (e: React.DragEvent, index: number) => {
-    setDraggedIndex(index);
-    e.dataTransfer.effectAllowed = 'move';
-  };
-
-  const handleSortDragOver = (e: React.DragEvent, index: number) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-  };
-
-  const handleSortDrop = (e: React.DragEvent, dropIndex: number) => {
-    e.preventDefault();
-    if (draggedIndex === null || draggedIndex === dropIndex) return;
-
-    const newImages = [...images];
-    const draggedItem = newImages[draggedIndex];
-    newImages.splice(draggedIndex, 1);
-    newImages.splice(dropIndex, 0, draggedItem);
-    setImages(newImages);
-    setDraggedIndex(null);
-  };
-
-  const handleSortDragEnd = () => {
-    setDraggedIndex(null);
   };
 
   const generatePDF = async () => {
